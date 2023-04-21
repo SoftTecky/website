@@ -1,16 +1,16 @@
-# softracker
+# softracker frontend
 
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compila y recarga en caliente para desarrollo
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compila y minifica para producción
 ```
 npm run build
 ```
@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
+### Personalizar la configuración
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Agregamos manejo de rutas
+```
+vue add router
+Use history mode for router? (Y/n) y
