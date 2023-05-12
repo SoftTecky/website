@@ -112,7 +112,7 @@
 export default {};
 </script>
 
-<style scoped>
+<style scope>
 /* 
 * { border: #f309e7 solid 1px; }*/
 .text-muted {

@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="bodymain">
     <nav>
       <div>
         <!-- navbar -->
@@ -64,7 +64,7 @@
 export default {};
 </script>
 
-<style>
+<style scope>
 nav {
   background: #145D8A;
 }
@@ -73,7 +73,7 @@ nav {
   background: #37759C;
   color: white;
 }
-section {
+.bodymain {
   background: #F0F4F6;
 }
 

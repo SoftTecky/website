@@ -59,7 +59,7 @@
 export default {};
 </script>
 
-<style>
+<style scope>
 .text-muted {
   color: #6c757d !important;
 }
@@ -76,5 +76,9 @@ export default {};
     rgba(106, 17, 203, 1),
     rgba(37, 117, 252, 1)
   );
+}
+
+.form-label {
+  color: #37759c;
 }
 </style>
