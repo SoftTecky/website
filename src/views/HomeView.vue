@@ -1,12 +1,39 @@
 <template>
   <section class="bodymain">
-    <nav>
-      <div>
-        <!-- navbar -->
+    <!-- inicio nav -->
+    <nav class="align-items-center">
+      <div class="container-fluid">
+        <div class="row justify-content-between">
+          <!-- Logotipo -->
+          <div class="col-sm-2 text-left">
+            <div class="logo">
+              <img src="ruta-logo.png" alt="Logo de mi sitio web" />
+            </div>
+          </div>
+
+          <!-- Buscador -->
+          <div class="col-sm-6">
+            <div class="search-box rounded">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded"
+                  placeholder="Buscar..."
+                />
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
+
+    <!-- fin nav -->
     <div class="container-fluid">
       <div class="row flex-nowrap">
+        <!-- inicio sidemenu -->
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidemenubg">
           <div
             class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
@@ -47,11 +74,10 @@
               </li>
             </ul>
             <hr />
-            <div class="dropdown pb-4">
-              
-            </div>
+            <div class="dropdown pb-4"></div>
           </div>
         </div>
+        <!-- fin sidemenu -->
         <div class="col py-3">Content area...</div>
       </div>
     </div>
@@ -65,16 +91,18 @@ export default {};
 </script>
 
 <style scope>
+/* * { border: red solid 0.5px; } */
+
 nav {
-  background: #145D8A;
+  background: #145d8a;
 }
 
-.sidemenubg, .nav-link{
-  background: #37759C;
+.sidemenubg,
+.nav-link {
+  background: #37759c;
   color: white;
 }
 .bodymain {
-  background: #F0F4F6;
+  background: #f0f4f6;
 }
-
 </style>
