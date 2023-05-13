@@ -78,7 +78,33 @@
           </div>
         </div>
         <!-- fin sidemenu -->
-        <div class="col py-3">Content area...</div>
+        <div class="col py-3">
+          <div class="rounded">
+            <div class="profile-coment bg-white h-50">
+              <!--  -->
+              <div class="profile-header">
+                <div class="d-flex align-items-center">
+                  <div class="profile-avatar">
+                  </div>
+                  <div class="flex-column">
+                    <div class="col">
+                      <div class="item-name rounded">
+                        <span>Usuario 1</span>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="item-coment rounded h-50 w-100">
+                        <span>¿En que estas pensando?</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+            </div>
+          </div>
+          <load></load>
+        </div>
       </div>
     </div>
   </section>
@@ -86,8 +112,14 @@
 
 <script>
 // @ is an alias to /src import HelloWorld from '@/components/HelloWorld.vue'
+import loadSkeleton from "@/components/ScreenSkeleton.vue";
 
-export default {};
+export default {
+  name: "VistaEsqueleto",
+  components: {
+    load: loadSkeleton,
+  },
+};
 </script>
 
 <style scope>
@@ -104,5 +136,34 @@ nav {
 }
 .bodymain {
   background: #f0f4f6;
+}
+
+.profile-coment {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 39vw;
+  padding: 3vh;
+  margin: 2vh 0 0 2vh;
+  border-radius: 15px;
+}
+
+.profile-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  margin: 0 1vw 0 0vw;
+}
+
+.item-name {
+  /* top vh, right vw, bottom vh, left vw  */
+  padding: 0 25vw 0 0;
+  margin: 0 0 1vh 0;
+}
+
+.item-coment {
+  color: #bbb4b4;
+  padding: 1vh 16vw 5vh 1vw;
+  border: #d1d1d1 solid 1px;
 }
 </style>
