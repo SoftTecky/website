@@ -125,7 +125,7 @@ export default {
 </script>
 
 <style scope>
-* { border: red solid 0.5px; }
+/* * { border: red solid 0.5px; } */
 
 nav {
   background: #145d8a;
