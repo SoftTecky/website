@@ -7,7 +7,7 @@
           <!-- Logotipo -->
           <div class="col-sm-2 text-left">
             <div class="logo">
-              <img src="ruta-logo.png" alt="Logo de mi sitio web" />
+              <img src="@/assets/logo.png" alt="Logo de mi sitio web" />
             </div>
           </div>
 
@@ -34,45 +34,44 @@
     <div class="container-fluid">
       <div class="row flex-nowrap">
         <!-- inicio sidemenu -->
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidemenubg ">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidemenubg">
           <div
-            class="d-flex flex-column align-items-center align-items-sm-start 
-                  px-3 pt-2 text-white min-vh-100"
+            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
           >
             <ul
-              class="nav nav-pills flex-column mb-sm-auto mb-0 
-                    align-items-center align-items-sm-start"
+              class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
               id="menu"
             >
               <li class="nav-item">
-                <a href="#" class="nav-link align-middle px-0">
+                <a href="#" class="nav-link btn active">
                   <i class="fs-4 bi-house"></i>
-                  <span class="ms-1 d-none d-sm-inline">Inicio</span>
+                  <span class="ms-1">Inicio</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="#" class="nav-link btn">
                   <i class="fs-4 bi-people"></i>
-                  <span class="ms-1 d-none d-sm-inline">Evaluar</span>
+                  <span class="ms-1">Evaluar</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="#" class="nav-link btn">
                   <i class="fs-4 bi-people"></i>
-                  <span class="ms-1 d-none d-sm-inline">Notificaciones</span>
+                  <span class="ms-1">Notificaciones</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="#" class="nav-link btn">
                   <i class="fs-4 bi-people"></i>
-                  <span class="ms-1 d-none d-sm-inline">Mi red</span>
+                  <span class="ms-1">Mi red</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-people"></i>
-                  <span class="ms-1 d-none d-sm-inline">Perfil</span>
+                <router-link to="/profile">
+                  <a href="#" class="nav-link btn">
+                  <span class="ms-1">Perfil</span>
                 </a>
+              </router-link>  
               </li>
             </ul>
             <hr />
@@ -81,92 +80,73 @@
         </div>
         <!-- fin sidemenu -->
         <div class="col py-3">
-          <div class="rounded">
-            <div class="profile-coment bg-white h-50">
-              <!--  -->
-              <div class="profile-header">
-                <div class="d-flex align-items-center">
-                  <div class="profile-avatar">
-                  </div>
-                  <div class="flex-column">
-                    <div class="col">
-                      <div class="item-name rounded">
-                        <span>Usuario 1</span>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="item-coment rounded h-50 w-100">
-                        <span>¿En que estas pensando?</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--  -->
-            </div>
-          </div>
+          <sharebox></sharebox>
           <load></load>
         </div>
       </div>
     </div>
+
+    
   </section>
 </template>
 
 <script>
 // @ is an alias to /src import HelloWorld from '@/components/HelloWorld.vue'
 import loadSkeleton from "@/components/ScreenSkeleton.vue";
+import ModuloComentario from "@/components/ContentMain.vue";
 
 export default {
-  name: "VistaEsqueleto",
+  name: "VistaPrincipal",
   components: {
     load: loadSkeleton,
+    sharebox: ModuloComentario,
   },
 };
 </script>
 
 <style scope>
-/* * { border: red solid 0.5px; } */
+/* * { border: red solid 1px; } */
 
 nav {
   background: #145d8a;
 }
 
-.sidemenubg,
-.nav-link {
+.logo {
+  display: flex;
+  align-items: left;
+}
+.logo img {
+  height: 8vh;
+  /* position: fixed; */
+  transform: translateY(-12%);
+}
+
+.sidemenubg {
   background: #37759c;
+}
+
+.nav-link {
+  text-align: left;
+  color: white;
+  border: #548aac solid 2px;
+  border-radius: 15px;
+  width: 12em;
+  transform: translateX(-5%);
+  /* top vh, right vw, bottom vh, left vw  */
+  padding: 0vh 4vw 1vh 1vw;
+  margin: 0 0 1vh 0;
+}
+.nav-link:hover {
+  background: #548aac;
+  color: white;
+}
+a.btn.active {
+  background-color: #548aac;
+  border: #548aac solid 1px;
   color: white;
 }
 
 .bodymain {
   background: #f0f4f6;
-}
-
-.profile-coment {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 39vw;
-  padding: 3vh;
-  margin: 2vh 0 0 2vh;
-  border-radius: 15px;
-}
-
-.profile-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #d1d1d1;
-  margin: 0 1vw 0 0vw;
-}
-
-.item-name {
-  /* top vh, right vw, bottom vh, left vw  */
-  padding: 0 25vw 0 0;
-  margin: 0 0 1vh 0;
-}
-
-.item-coment {
-  color: #bbb4b4;
-  padding: 1vh 16vw 5vh 1vw;
-  border: #d1d1d1 solid 1px;
 }
 </style>
