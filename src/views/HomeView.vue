@@ -34,12 +34,14 @@
     <div class="container-fluid">
       <div class="row flex-nowrap">
         <!-- inicio sidemenu -->
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidemenubg">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidemenubg ">
           <div
-            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+            class="d-flex flex-column align-items-center align-items-sm-start 
+                  px-3 pt-2 text-white min-vh-100"
           >
             <ul
-              class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              class="nav nav-pills flex-column mb-sm-auto mb-0 
+                    align-items-center align-items-sm-start"
               id="menu"
             >
               <li class="nav-item">
@@ -123,7 +125,7 @@ export default {
 </script>
 
 <style scope>
-/* * { border: red solid 0.5px; } */
+* { border: red solid 0.5px; }
 
 nav {
   background: #145d8a;
@@ -134,6 +136,7 @@ nav {
   background: #37759c;
   color: white;
 }
+
 .bodymain {
   background: #f0f4f6;
 }

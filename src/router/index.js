@@ -4,8 +4,6 @@ import LoginScreen from '../views/LoginScreen.vue'
 import RegisterScreen from '../views/RegisterScreen.vue'
 import HomeView from '../views/HomeView.vue'
 
-// Componentes //
-import SkeletonLoad from '../components/ScreenSkeleton.vue'
 
 const routes = [
   {
@@ -22,11 +20,7 @@ const routes = [
     path: '/home',
     name: 'home',
     component: HomeView
-  },
-  {
-    name: 'load',
-    component: SkeletonLoad
-  },
+  }
 ]
 
 const router = createRouter({
