@@ -35,14 +35,19 @@
                     placeholder="Ingresa tu contraseña"
                     required=""
                   />
-                  <button class="btn btn-block btn-primary mt-5" type="submit">
-                    ACCEDER
-                  </button>
+                  <router-link to="/home"
+                      class="btn btn-block btn-primary mt-5"
+                      type="submit"
+                      @click="login"
+                    >
+                      ACCEDER
+                  </router-link>
+
                   <p class="mt-3 mb-3 text-muted">
                     ¿No tienes cuenta?
                     <router-link to="/register"
-                      ><a href="">Registrate</a></router-link
-                    >
+                      ><a >Registrate</a>
+                    </router-link>
                   </p>
                 </form>
               </div>
