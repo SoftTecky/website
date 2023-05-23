@@ -1,38 +1,150 @@
 <template>
-  <!--nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav-->
-  <router-view/>
+    <!-- inicio nav -->
+    <nav class="align-items-center" v-if="!isLoggedIn">
+      <div class="container-fluid">
+        <div class="toolbar row justify-content-between">
+          <!-- Logotipo -->
+          <div class="col-sm-2 text-left">
+            <div class="logo">
+              <img src="@/assets/logo.png" alt="Logo de mi sitio web" />
+            </div>
+          </div>
+          <!-- Buscador -->
+          <div class="col-sm-6">
+            <div class="search-box rounded">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control rounded"
+                  placeholder="Buscar..."
+                />
+                <div class="input-group-prepend">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row flex-nowrap">
+        <!-- inicio sidemenu -->
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 sidemenubg" v-if="!isLoggedIn">
+          <div
+            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+          >
+            <ul
+              class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+              id="menu"
+            >
+              <li class="nav-item">
+                <router-link to="/home">
+                  <a class="nav-link btn">
+                    <span class="ms-1">Inicio</span>
+                  </a>
+                </router-link>
+              </li>
+              <li>
+                <a class="nav-link btn">
+                  <i class="fs-4 bi-people"></i>
+                  <span class="ms-1">Evaluar</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link btn">
+                  <i class="fs-4 bi-people"></i>
+                  <span class="ms-1">Notificaciones</span>
+                </a>
+              </li>
+              <li>
+                <a class="nav-link btn">
+                  <i class="fs-4 bi-people"></i>
+                  <span class="ms-1">Mi red</span>
+                </a>
+              </li>
+              <li>
+                <router-link to="/profile">
+                  <a class="nav-link btn">
+                    <span class="ms-1">Perfil</span>
+                  </a>
+                </router-link>
+              </li>
+            </ul>
+            <hr />
+            <div class="dropdown pb-4"></div>
+          </div>
+        </div>
+
+        <div class="col py-3">
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
+
+// import sidmenu from "@/components/SidMenu.vue"; // sidebar
+// import navbar from "@/components/NavBar.vue"; // toolbar
+
 export default {
-  name: 'App'
-}
+  name: "App",
+  data() {
+    return {
+      isLoggedIn: false, // Variable de estado para controlar el estado de inicio de sesión
+      
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
+<style scoped>
+/* Estilos específicos para el componente NavBar */
 nav {
-  padding: 30px;
+  background: #145d8a;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+nav .toolbar {
+  padding: 2vh;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.logo {
+  display: flex;
+  align-items: left;
+}
+.logo img {
+  height: 8vh;
+  transform: translateY(-12%);
+}
+
+/* Estilos específicos para el componente SideMenu */
+.sidemenubg {
+  background: #37759c;
+  height: max-content;
+}
+
+.nav-link {
+  text-align: left;
+  color: white;
+  border: #548aac solid 2px;
+  border-radius: 15px;
+  width: 12em;
+  transform: translateX(-5%);
+  /* top vh, right vw, bottom vh, left vw  */
+  padding: 0vh 4vw 1vh 1vw;
+  margin: 0 0 1vh 0;
+}
+.nav-link:hover {
+  background: #548aac;
+  color: white;
+}
+a.btn.active {
+  background-color: #548aac;
+  border: #548aac solid 1px;
+  color: white;
 }
 </style>
