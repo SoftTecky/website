@@ -77,7 +77,7 @@
           </div>
         </div>
 
-        <div class="col py-3">
+        <div class=" back col py-0">
           <router-view></router-view>
         </div>
       </div>
@@ -106,6 +106,10 @@ export default {
 /* Estilos específicos para el componente NavBar */
 nav {
   background: #145d8a;
+}
+
+.back {
+  background: #F0F4F6;
 }
 
 nav .toolbar {
