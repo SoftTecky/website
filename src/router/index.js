@@ -31,7 +31,7 @@ const routes = [
     path: '/evaluation',
     name: 'evaluation',
     component: Evaluation
-  }
+  },
 ]
 
 const router = createRouter({
