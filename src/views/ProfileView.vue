@@ -9,6 +9,7 @@
         </div>
         <div class="conetntGraph">
             <div class="Cuadro-inferior"></div>
+            <div class="Cuadro-Grafico"> GRAFICO DE TELARANIA </div>
             <div class="Primer-Cuadro"></div>
             <div class="Segundo-Cuadro"></div>
             <div class="Tercer-Cuadro"></div>
@@ -95,6 +96,16 @@ export default {
     position: absolute;
     padding: 3vh;
     margin: 53vh 0 0 2vh;
+}
+
+.Cuadro-Grafico {
+    width: 300px;
+    height: 238px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    padding: 3vh;
+    margin: 56vh 0 0 5vh;
+    border-radius: 15px;
 }
 
 .Primer-Cuadro, 
