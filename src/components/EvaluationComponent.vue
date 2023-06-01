@@ -23,9 +23,9 @@
 
     <div class="SeccionPreguntas">
       <div class="izq com">
-        
-        comunicacion efectiva
-      
+
+        <p>{{ tituloTexto }}</p>
+
       </div>
 
       <div class="preguntaLabel">
@@ -41,9 +41,9 @@
       <div class="cuestionario">
 
         <div class="preguntas">
-          <p>capacidad para expresarse claramente y de manera efectiva tanto verbalmente como por escrito</p>
-          <p>habilidades para escuchar activamente y comprender lasnecesidades y requerimientos de los demas</p>
-          <p>habilidad para trasmitir infirmacion tecnica de forma comprensible a diferentes audiencias  </p>
+          <p>{{ florTexto }}</p>
+          <p>{{ pandaTexto }}</p>
+          <p>{{ canTexto }}</p>
         </div>
         <div class="puntuacion">
           <div class="respuesta">
@@ -107,14 +107,71 @@
 
 
     </div>
-     
-    <button class="btn_continuar">Continuar</button>
 
     
+    <div id="app">
+
+      <button class="btn_continuar" @click="cambiarTexto">Continuar</button>
+    </div>
+
   </div>
 </template>
 
+<script>
+export default {
 
+
+  data() {
+  return {
+    arreglo: ["Capacidad para expresarse claramente y de manera efectiva tanto verbalmente como por escrito."
+    , "Habilidad para escuchar activamente y comprender las necesidades y requerimientos de los demás."
+    , "Habilidad para transmitir información técnica de forma comprensible a diferentes audiencias."
+    , "Habilidad para colaborar con otros miembros del equipo y contribuir con fortalezas individuales."
+    , "Capacidad para trabajar en proyectos multidisciplinarios y participar activamente en la resolución de problemas en equipo."
+    , "Habilidad para mantener relaciones profesionales y trabajar en armonía con los demás."
+    , "Capacidad para analizar problemas complejos y encontrar soluciones adecuadas."
+    , "Habilidad para evaluar situaciones desde diferentes perspectivas y tomar decisiones bien fundamentadas."
+    , "Capacidad para analizar datos y evidencias de manera objetiva."
+    , "Habilidad para aprender y actualizarse constantemente en nuevas tecnologías y metodologías."
+    , "Capacidad para ajustarse a cambios en los requerimientos del proyecto y a diferentes situaciones laborales."
+    , "Habilidad para enfrentar y manejar situaciones de cambio y ambigüedad de manera efectiva."
+    , "Capacidad para identificar problemas y analizarlos de manera efectiva."
+    , "Habilidad para encontrar soluciones creativas y eficientes a problemas técnicos y funcionales."
+    , "Habilidad para implementar soluciones y evaluar su efectividad."
+    , "Habilidad para trabajar con precisión y cuidado en los detalles."
+    , "Capacidad para revisar y verificar el trabajo realizado para asegurar la calidad y confiabilidad del software y sistemas de TI."
+    , "Habilidad para seguir procedimientos y estándares establecidos."],
+    arregloTitulo: ["Comunicación Efectiva", "Trabajo en Equipo", "Pensamiento Crítico","Adaptabilidad","Resolución de Problemas","Orientación al Detalle"],
+    florIndice: 0,
+    pandaIndice: 1,
+    canIndice: 2,
+    tituloIndice: 0,
+    florTexto: "",
+    pandaTexto: "",
+    canTexto: "",
+    tituloTexto:""
+  };
+},
+methods: {
+  cambiarTexto() {
+    this.florTexto = this.arreglo[this.florIndice];
+    this.pandaTexto = this.arreglo[this.pandaIndice];
+    this.canTexto = this.arreglo[this.canIndice];
+    this.tituloTexto = this.arregloTitulo[this.tituloIndice];
+    
+    this.florIndice = (this.florIndice + 3) % this.arreglo.length;
+    this.pandaIndice = (this.pandaIndice + 3) % this.arreglo.length;
+    this.canIndice = (this.canIndice + 3) % this.arreglo.length;
+    this.tituloIndice = (this.tituloIndice + 1) % this.arregloTitulo.length;
+
+
+  }
+}
+
+
+}
+
+</script>
   
 <style>
 .level {
@@ -125,7 +182,8 @@
 .izq {
   text-align: left;
 }
-.com{
+
+.com {
   border-bottom-color: #37759c;
   border: solid 1px;
   border-top: none;
@@ -171,13 +229,14 @@
   padding-right: 45%;
   margin-bottom: 0px;
 }
+
 .unodedoce .num {
-background-color: #37759c;
-width: 50px;
-height: 50px;
-padding: 15px;
-text-align: center;
-color: #ffffff;
+  background-color: #37759c;
+  width: 50px;
+  height: 50px;
+  padding: 15px;
+  text-align: center;
+  color: #ffffff;
 }
 
 .preguntaLabel {
@@ -190,7 +249,8 @@ color: #ffffff;
 
 
 }
-.preguntaLabel_pregunta{
+
+.preguntaLabel_pregunta {
   grid-column: 1 / 3;
 }
 
@@ -200,9 +260,10 @@ color: #ffffff;
   grid-gap: 10px;
   padding-left: 80px;
   padding-right: 80px;
- 
+
 }
-.preguntas{
+
+.preguntas {
   grid-column: 1 / 3;
 }
 
@@ -215,7 +276,8 @@ color: #ffffff;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.respuesta{
+
+.respuesta {
   margin-bottom: 16px;
   height: 60px;
   align-items: center;
@@ -228,15 +290,20 @@ color: #ffffff;
   background-color: #d9edff;
 }
 
-.btn_continuar{
-background-color: #37759c;
-color: #ffffff;
-border-radius: 20px;
-padding: 10px 20px;
-border: none;
-font-size: 16px;
-cursor: pointer;
-width: 150px;
+.btn_continuar {
+  background-color: #37759c;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
 }
+
+#app{
+text-align: center;
+}
+
 
 </style>
