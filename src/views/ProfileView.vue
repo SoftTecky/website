@@ -1,22 +1,26 @@
 <template>
-
-    <div class="box h-100 w-100">
-        <span> Perfil de usuario </span>
+    <div class="container">
+        <div class="contentProfil">
+            <div class="Cuadrado-Principal"> </div>
+            <div class="Cuadro-foto"> IMAGEN USUARIO</div>
+            <div class="Cuadro-nombre">@usuario</div>
+            <div class="Cuadro-info"> informacion de un usuario generico</div>
+            <button class="Editar"> Editar </button>
+        </div>
+        <div class="conetntGraph">
+            <div class="Cuadro-inferior"></div>
+            <div class="Cuadro-Grafico"> GRAFICO DE TELARANIA </div>
+            <div class="Primer-Cuadro"></div>
+            <div class="Segundo-Cuadro"></div>
+            <div class="Tercer-Cuadro"></div>
+            <div class="Cuarto-Cuadro"></div>
+            <div class="Quinto-Cuadro"></div>
+        </div>
     </div>
-    <div class= "Cuadrado-Principal"> </div>
-    <div class="Cuadro-foto"></div>
-    <div class="Cuadro-nombre"></div>
-    <div class="Cuadro-info"></div>
-    <div class="Cuadro-inferior"></div>
-    <div class="Primer-Cuadro"></div>
-    <div class="Segundo-Cuadro"></div>
-    <div class="Tercer-Cuadro"></div>
-    <div class="Cuarto-Cuadro"></div>
-    <div class="Quinto-Cuadro"></div>
-
-    <button class="Editar">  Editar </button>
 
 
+
+    
 </template>
 
 <script>
@@ -30,93 +34,109 @@ export default {
 .box {
     background-color: aqua;
 }
-.Cuadrado-Principal {
-width: 1250px;
-height: 300px;
-background-color: hsl(180, 38%, 41%);
-position: absolute;
-left: 10px;
-top: 110px;
-}
-.Cuadro-foto {
-width: 300px;
-height: 250px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 30px;
-top: 135px;
-}
-.Cuadro-nombre{
-width: 600px;
-height: 70px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 135px;
-}
-.Cuadro-info {
-width: 850px;
-height: 165px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 220px;
-}
-.Cuadro-inferior{
-width: 1250px;
-height: 300px;
-background-color: hsl(180, 38%, 41%);
-position: absolute;
-left: 10px;
-top: 450px; 
-}
-.Primer-Cuadro{
-width: 850px;
-height: 37px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 470px;
-}
-.Segundo-Cuadro{
-width: 850px;
-height: 37px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 527px;
-}
-.Tercer-Cuadro{
-width: 850px;
-height: 37px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 583px;
-}
-.Cuarto-Cuadro{
-width: 850px;
-height: 37px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 643px;
-}
-.Quinto-Cuadro{
-width: 850px;
-height: 37px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 350px;
-top: 699px;
+
+.container {
+    padding: -2vh;
+    margin: 0.5vh 0 0 -2vh;
 }
 
-.Editar{
-width: 230px;
-height: 70px;
-background-color: hsl(180, 3%, 57%);
-position: absolute;
-left: 970px;
-top: 135px;
+.Cuadrado-Principal {
+    width: 78vw;
+    height: 300px;
+    background-color: hsl(180, 38%, 41%);
+    position: absolute;
+    padding: 3vh;
+    margin: 2vh 0 0 2vh;
+}
+
+.Cuadro-foto {
+    width: 300px;
+    height: 250px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    padding: 3vh;
+    margin: 6vh 0 0 5vh;
+    border-radius: 15px;
+}
+
+.Cuadro-nombre {
+    width: 465px;
+    height: 70px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    padding: 3vh;
+    margin: 6vh 0 0 55vh;
+    border-radius: 8px;
+}
+
+.Editar {
+    width: 230px;
+    height: 70px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    padding: 3vh;
+    margin: 6vh 0 0 131vh;
+    border-radius: 10px;
+}
+
+.Cuadro-info {
+    width: 706px;
+    height: 165px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    padding: 3vh;
+    margin: 19vh 0 0 55vh;
+    border-radius: 5px;
+}
+
+.Cuadro-inferior {
+    width: 78vw;
+    height: 274px;
+    background-color: hsl(180, 38%, 41%);
+    position: absolute;
+    padding: 3vh;
+    margin: 53vh 0 0 2vh;
+}
+
+.Cuadro-Grafico {
+    width: 300px;
+    height: 238px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    padding: 3vh;
+    margin: 56vh 0 0 5vh;
+    border-radius: 15px;
+}
+
+.Primer-Cuadro, 
+.Segundo-Cuadro, 
+.Tercer-Cuadro, 
+.Cuarto-Cuadro,
+.Quinto-Cuadro {
+    width: 706px;
+    height: 37px;
+    background-color: hsl(180, 3%, 57%);
+    position: absolute;
+    margin-left: 55vh;
+}
+.Primer-Cuadro {
+    padding: 3vh;
+    margin-top: 56vh;
+}
+.Segundo-Cuadro {
+    padding: 3vh;
+    margin-top: 64vh;
+}
+.Tercer-Cuadro {
+    padding: 3vh;
+    margin-top: 72vh;
+}
+.Cuarto-Cuadro {
+    padding: 3vh;
+    margin-top: 80vh;
+}
+.Quinto-Cuadro {
+    padding: 3vh;
+    margin-top: 88vh;
 }
 </style>
