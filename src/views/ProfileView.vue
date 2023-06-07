@@ -1,20 +1,25 @@
 <template>
     <div class="container">
         <div class="contentProfil">
-            <div class="Cuadrado-Principal"> </div>
-            <div class="Cuadro-foto"> IMAGEN USUARIO</div>
-            <div class="Cuadro-nombre">@usuario</div>
-            <div class="Cuadro-info"> informacion de un usuario generico</div>
-            <button class="Editar"> Editar </button>
+            <div class="Cuadrado-Principal"> 
+                <div class="Cuadro-foto"> IMAGEN USUARIO</div>
+                <div class="Cuadro-nombre">@usuario</div>
+                <div class="Cuadro-info"> informacion de un usuario generico</div>
+                <button class="Editar"> Editar </button>
+            </div>
+            
+            
         </div>
         <div class="conetntGraph">
-            <div class="Cuadro-inferior"></div>
-            <div class="Cuadro-Grafico"> GRAFICO DE TELARANIA </div>
-            <div class="Primer-Cuadro"></div>
-            <div class="Segundo-Cuadro"></div>
-            <div class="Tercer-Cuadro"></div>
-            <div class="Cuarto-Cuadro"></div>
-            <div class="Quinto-Cuadro"></div>
+            <div class="Cuadro-inferior">
+                <div class="Cuadro-Grafico"> GRAFICO DE TELARANIA </div>
+                <div class="Primer-Cuadro"></div>
+                <div class="Segundo-Cuadro"></div>
+                <div class="Tercer-Cuadro"></div>
+                <div class="Cuarto-Cuadro"></div>
+                <div class="Quinto-Cuadro"></div>
+            </div>
+            
         </div>
     </div>
     
@@ -41,7 +46,7 @@ export default {
     width: 78vw;
     height: 300px;
     background-color: hsl(180, 38%, 41%);
-    position: absolute;
+    position: relative;
     padding: 3vh;
     margin: 2vh 0 0 2vh;
 }
@@ -50,9 +55,9 @@ export default {
     width: 300px;
     height: 250px;
     background-color: hsl(180, 3%, 57%);
-    position: absolute;
+    position: relative;
     padding: 3vh;
-    margin: 6vh 0 0 5vh;
+    margin: 0vh 0 0 0vh;
     border-radius: 15px;
 }
 
@@ -60,9 +65,9 @@ export default {
     width: 465px;
     height: 70px;
     background-color: hsl(180, 3%, 57%);
-    position: absolute;
+    position: relative;
     padding: 3vh;
-    margin: 6vh 0 0 55vh;
+    margin: -31vh 0 0 39vh;
     border-radius: 8px;
 }
 
@@ -70,9 +75,9 @@ export default {
     width: 230px;
     height: 70px;
     background-color: hsl(180, 3%, 57%);
-    position: absolute;
+    border: 1px solid red;
     padding: 3vh;
-    margin: 6vh 0 0 131vh;
+    margin: -50vh 0 0 129vh;
     border-radius: 10px;
 }
 
@@ -80,9 +85,9 @@ export default {
     width: 706px;
     height: 165px;
     background-color: hsl(180, 3%, 57%);
-    position: absolute;
+    position: relative;
     padding: 3vh;
-    margin: 19vh 0 0 55vh;
+    margin: 1vh 0 0 39vh;
     border-radius: 5px;
 }
 
@@ -90,7 +95,7 @@ export default {
     width: 78vw;
     height: 274px;
     background-color: hsl(180, 38%, 41%);
-    position: absolute;
+    position: relative;
     padding: 3vh;
     margin: 53vh 0 0 2vh;
 }
@@ -99,7 +104,7 @@ export default {
     width: 300px;
     height: 238px;
     background-color: hsl(180, 3%, 57%);
-    position: absolute;
+    position: relative;
     padding: 3vh;
     margin: 56vh 0 0 5vh;
     border-radius: 15px;
@@ -113,7 +118,7 @@ export default {
     width: 706px;
     height: 37px;
     background-color: hsl(180, 3%, 57%);
-    position: absolute;
+    position: relative;
     margin-left: 55vh;
 }
 .Primer-Cuadro {
