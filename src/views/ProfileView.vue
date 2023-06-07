@@ -17,9 +17,6 @@
             <div class="Quinto-Cuadro"></div>
         </div>
     </div>
-
-
-
     
 </template>
 
