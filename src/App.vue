@@ -1,5 +1,5 @@
 <template>
-  <!-- inicio nav -->
+  <!-- inicio nav SamuelEstuvoAqui -->
   <nav class="align-items-center" v-if="!isLoggedIn">
     <div class="container-fluid">
       <div class="toolbar row justify-content-between">
