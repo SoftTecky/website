@@ -1,12 +1,13 @@
 <template>
-  <div class="etab">
+  <!-- creamos el componente de evaluacion   -->
+  <div class="etab">  
 
-    <div class="label izq">
+    <div class="label izq"> <!-- label de puntuacion alineado ala izquierda -->
       Puntuacion del 1 a 5
     </div>
     <div class="level izq">
 
-      <div class="list">
+      <div class="list"> <!-- label de las puntuaciones   -->
         <p>1 Necesita mejorar</p>
         <p>2 En Desacuerdo</p>
         <p>3 Competente</p>
@@ -15,7 +16,7 @@
       </div>
     </div>
 
-    <div class="unodedoce">
+    <div class="unodedoce"> <!-- numero de la seccion  -->
       <div class="num">1</div>
       <div>Seccion de</div>
       <div class="num">12</div>
@@ -24,16 +25,16 @@
     <div class="SeccionPreguntas">
       <div class="izq com">
 
-        <p>{{ tituloTexto }}</p>
+        <p>{{ tituloTexto }}</p> <!-- titulo de la seccion  -->
 
       </div>
 
       <div class="preguntaLabel">
         <div class="preguntaLabel_pregunta">
-          <p>Pregunta</p>
+          <p>Pregunta</p> <!-- label para la pregunta  -->
         </div>
         <div class="preguntaLabel_puntuacion">
-          <p>Puntuacion</p>
+          <p>Puntuacion</p> <!-- label para la puntuacion  -->
         </div>
 
       </div>
@@ -42,65 +43,22 @@
 
         <div class="preguntas">
           <p>{{ florTexto }}</p>
-          <p>{{ pandaTexto }}</p>
+          <p>{{ pandaTexto }}</p> <!-- preguntas que se mostraran -->
           <p>{{ canTexto }}</p>
         </div>
         <div class="puntuacion">
-          <div class="respuesta">
-            <input type="radio" id="one" value="One" />
-            <label for="one">1</label>
-
-            <input type="radio" id="two" value="Two" />
-            <label for="two">2</label>
-
-            <input type="radio" id="tree" value="tree" />
-            <label for="tree">3</label>
-
-
-            <input type="radio" id="four" value="four" />
-            <label for="four">4</label>
-
-
-            <input type="radio" id="five" value="five" />
-            <label for="five">5</label>
+          <div class="respuesta"> <!-- radio buttons para responder las preguntas -->
+          <RadioBtn></RadioBtn>
 
           </div>
+
           <div class="respuesta">
-            <input type="radio" id="one" value="One" />
-            <label for="one">1</label>
-
-            <input type="radio" id="two" value="Two" />
-            <label for="two">2</label>
-
-            <input type="radio" id="tree" value="tree" />
-            <label for="tree">3</label>
-
-
-            <input type="radio" id="four" value="four" />
-            <label for="four">4</label>
-
-
-            <input type="radio" id="five" value="five" />
-            <label for="five">5</label>
+            <RadioBtn></RadioBtn>
           </div>
+
           <div class="respuesta">
-            <input type="radio" id="one" value="One" />
-            <label for="one">1</label>
-
-            <input type="radio" id="two" value="Two" />
-            <label for="two">2</label>
-
-            <input type="radio" id="tree" value="tree" />
-            <label for="tree">3</label>
-
-
-            <input type="radio" id="four" value="four" />
-            <label for="four">4</label>
-
-
-            <input type="radio" id="five" value="five" />
-            <label for="five">5</label>
-          </div>
+            <RadioBtn></RadioBtn>
+          </div> <!-- fin de radio button para responder las preguntas -->
 
         </div>
       </div>
@@ -111,18 +69,23 @@
     
     <div id="app">
 
-      <button class="btn_continuar" @click="cambiarTexto">Continuar</button>
+      <button class="btn_continuar" @click="cambiarTexto">Continuar</button> <!-- accion del boton continuar -->
     </div>
 
   </div>
 </template>
 
 <script>
+import RadioBtn from './RadioButtonComponent.vue'
 export default {
 
-
+  components: {
+    RadioBtn // se guardan los componentes creados en una variable
+    
+    
+  },
   data() {
-  return {
+  return { //arreglo que contiene las preguntas de todas las secciones 
     arreglo: ["Capacidad para expresarse claramente y de manera efectiva tanto verbalmente como por escrito."
     , "Habilidad para escuchar activamente y comprender las necesidades y requerimientos de los demás."
     , "Habilidad para transmitir información técnica de forma comprensible a diferentes audiencias."
@@ -144,22 +107,23 @@ export default {
     arregloTitulo: ["Comunicación Efectiva", "Trabajo en Equipo", "Pensamiento Crítico","Adaptabilidad","Resolución de Problemas","Orientación al Detalle"],
     florIndice: 0,
     pandaIndice: 1,
-    canIndice: 2,
+    canIndice: 2, 
     tituloIndice: 0,
     florTexto: "",
     pandaTexto: "",
     canTexto: "",
     tituloTexto:""
+    //variables inicializadas 
   };
 },
 methods: {
   cambiarTexto() {
-    this.florTexto = this.arreglo[this.florIndice];
+    this.florTexto = this.arreglo[this.florIndice];//funcion para guardar la pregunta del arreglo en una variable
     this.pandaTexto = this.arreglo[this.pandaIndice];
     this.canTexto = this.arreglo[this.canIndice];
     this.tituloTexto = this.arregloTitulo[this.tituloIndice];
     
-    this.florIndice = (this.florIndice + 3) % this.arreglo.length;
+    this.florIndice = (this.florIndice + 3) % this.arreglo.length;//asignar el texto guardado en la variable ala etiqueta p
     this.pandaIndice = (this.pandaIndice + 3) % this.arreglo.length;
     this.canIndice = (this.canIndice + 3) % this.arreglo.length;
     this.tituloIndice = (this.tituloIndice + 1) % this.arregloTitulo.length;
@@ -173,7 +137,7 @@ methods: {
 
 </script>
   
-<style>
+<style> 
 .level {
   padding-left: 10%;
   padding-right: 10%;

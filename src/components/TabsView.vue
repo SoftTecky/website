@@ -1,19 +1,19 @@
 <script>
 import Auto_evaluacion from './EvaluationComponent.vue'
-import Evaluar_a_otras_personas from './SelfEvaluationComponent.vue'
+import Evaluar_a_otras_personas from './SelfEvaluationComponent.vue' //importamos los componentes que se crearon 
 
-  
+
 export default {
   /* eslint-disable */ 
   components: {
-    Auto_evaluacion,
+    Auto_evaluacion, // se guardan los componentes creados en una variable
     Evaluar_a_otras_personas
     
   },
   data() {
     return {
       currentTab: 'Auto_evaluacion',
-      tabs: ['Auto_evaluacion', 'Evaluar_a_otras_personas']
+      tabs: ['Auto_evaluacion', 'Evaluar_a_otras_personas'] // crear un arreglo con los componentes
      
     }
   }
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="demo">
+  <div class="demo"> <!--  ciclo for para mostrar los componentes en ambas pestañas-->
     <button
        v-for="tab in tabs"
        :key="tab"

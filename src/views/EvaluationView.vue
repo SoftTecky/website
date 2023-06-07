@@ -1,6 +1,6 @@
 <template>
     <div class="tabs">
-        <EvaluationComp></EvaluationComp>
+        <EvaluationComp></EvaluationComp> <!-- agregamos el componente tabs a la seccion evaluacion -->
 
     </div>
   
@@ -12,13 +12,13 @@
   
   <script>
   // @ is an alias to /src import HelloWorld from '@/components/HelloWorld.vue'
-  import EvaluationComp from "@/components/TabsView.vue";
+  import EvaluationComp from "@/components/TabsView.vue";//importamos nuestro  componente tabs
   
   
   export default {
     name: "EvaluarTabs",
     components: {
-      EvaluationComp
+      EvaluationComp //creamos una variable para el componente tabs
     },
   };
   </script>
