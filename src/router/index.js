@@ -4,6 +4,8 @@ import LoginScreen from '../views/LoginScreen.vue'
 import RegisterScreen from '../views/RegisterScreen.vue'
 import HomeView from '../views/HomeView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import Evaluation from '../views/EvaluationView.vue'
+import NetworkView from '../views/NetworkView.vue'
 
 const routes = [
   {
@@ -22,9 +24,19 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/network',
+    name: 'network',
+    component: NetworkView
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: ProfileView
+  },
+  {
+    path: '/evaluation',
+    name: 'evaluation',
+    component: Evaluation
   },
 ]
 
