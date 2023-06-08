@@ -4,8 +4,8 @@
             <div class="Cuadrado-Principal"> </div>
             <div class="Cuadro-foto"> IMAGEN USUARIO</div>
             <div class="Cuadro-nombre">@usuario</div>
-            <div class="Cuadro-info"> informacion de un usuario generico</div>
             <button class="Editar"> Editar </button>
+            <div class="Cuadro-info"> informacion de un usuario generico</div>
         </div>
         <div class="conetntGraph">
             <div class="Cuadro-inferior"></div>
@@ -72,7 +72,8 @@ export default {
     background-color: hsl(180, 3%, 57%);
     position: absolute;
     padding: 3vh;
-    margin: 6vh 0 0 131vh;
+    /* top vh, right vw, bottom vh, left vw */
+    margin: 6vh 0 0 45vh;
     border-radius: 10px;
 }
 
