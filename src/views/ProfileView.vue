@@ -140,7 +140,7 @@ export default {
 }
 
 /* ------------------------------------------------------------------ */
-
+/* LE FALTA CORRECION */
 @media screen and (min-width: 1920px) {
     .container {
     padding: 2vh;
