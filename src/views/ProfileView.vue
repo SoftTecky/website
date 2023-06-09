@@ -50,6 +50,7 @@
                     </div>
                 </div>
                 <div class="infoGarph">
+                    <!-- aqui va unformacion del grafico, el porcentage y el nombre de la habilidad blanda evaluada -->
                     <!-- 1 -->
                     <div class="descGarph rounded">
 
