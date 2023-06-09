@@ -1,5 +1,4 @@
 <script setup>
-
 import EvaluationsComp from "@/components/evaluations/EvaluationsComp.vue";
 </script>
 
@@ -9,6 +8,4 @@ import EvaluationsComp from "@/components/evaluations/EvaluationsComp.vue";
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

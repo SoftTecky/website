@@ -1,71 +1,84 @@
 <script setup>
-import {onUpdated, ref} from "vue";
-import Modal from "@/components/common/Modal.vue"
-import blankProfile from "@/assets/blank-profile.webp"
+import { onUpdated, ref } from "vue";
+import Modal from "@/components/common/Modal.vue";
+import blankProfile from "@/assets/blank-profile.webp";
 
 import { GET_USER_BY_ID } from "@/graphql-operations";
-import {useQuery} from "@vue/apollo-composable";
-import {useRoute} from "vue-router";
-import {useAuthStore} from "@/stores/auth";
+import { useQuery } from "@vue/apollo-composable";
+import { useRoute } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 
-const user = ref({})
-const route = useRoute()
-const auth = useAuthStore()
+const user = ref({});
+const route = useRoute();
+const auth = useAuthStore();
 
 const userQuery = useQuery(GET_USER_BY_ID, {
   user_id: route.params.id,
 });
 
 userQuery.onResult((result) => {
-  if(result.data?.users.length > 0) {
-    user.value = result.data?.users[0]
+  if (result.data?.users.length > 0) {
+    user.value = result.data?.users[0];
   }
-})
+});
 
 onUpdated(() => {
   userQuery.refetch({
     user_id: route.params.id,
-  })
-})
+  });
+});
 
-const showModal = ref(false)
+const showModal = ref(false);
 
 const closeModal = () => {
   showModal.value = false;
   userQuery.refetch({
     user_id: route.params.id,
-  })
-}
+  });
+};
 </script>
 
 <template>
   <div class="container">
-
     <div class="contentMain flex-column bg-white rounded">
       <!--  -->
       <div class="row col">
         <div class="profile-avatar col order-1">
-          <img :src="user.avatar ? user.avatar : blankProfile" alt="imagen de usuario" style="width: 100%; height: 100%;">
+          <img
+            :src="user.avatar ? user.avatar : blankProfile"
+            alt="imagen de usuario"
+            style="width: 100%; height: 100%"
+          />
         </div>
         <div class="content-user col order-2">
           <!-- p-3 -->
-          <div class="user-edit row ">
+          <div class="user-edit row">
             <div class="username col order-1 rounded">
-                            <span>
-                                @{{user.name}} {{user.lastname1}} {{user.lastname2}}
-                            </span>
+              <span>
+                @{{ user.name }} {{ user.lastname1 }} {{ user.lastname2 }}
+              </span>
             </div>
             <!--  -->
             <div class="btnEdit col order-2 rounded">
-              <button v-if="auth.getId.toString() === route.params.id" @click="showModal = true" class="btn btn-primary">Editar perfil</button>
+              <button
+                v-if="auth.getId.toString() === route.params.id"
+                @click="showModal = true"
+                class="btn btn-primary"
+              >
+                Editar perfil
+              </button>
               <button v-else class="btn btn-primary">Conectar</button>
             </div>
           </div>
           <!-- p-3 -->
           <div class="userdesc col order-3 rounded">
-                        <span>
-                          {{ user.profiles?.length > 0 ? user.profiles[0].description : 'No hay descripción' }}
-                        </span>
+            <span>
+              {{
+                user.profiles?.length > 0
+                  ? user.profiles[0].description
+                  : "No hay descripción"
+              }}
+            </span>
           </div>
         </div>
       </div>
@@ -87,25 +100,15 @@ const closeModal = () => {
         <div class="infoGarph">
           <!-- aqui va unformacion del grafico, el porcentage y el nombre de la habilidad blanda evaluada -->
           <!-- 1 -->
-          <div class="descGarph rounded">
-
-          </div>
+          <div class="descGarph rounded"></div>
           <!-- 2 -->
-          <div class="descGarph rounded">
-
-          </div>
+          <div class="descGarph rounded"></div>
           <!-- 3 -->
-          <div class="descGarph rounded">
-
-          </div>
+          <div class="descGarph rounded"></div>
           <!-- 4 -->
-          <div class="descGarph rounded">
-
-          </div>
+          <div class="descGarph rounded"></div>
           <!-- 5 -->
-          <div class="descGarph rounded">
-
-          </div>
+          <div class="descGarph rounded"></div>
         </div>
       </div>
       <!--  -->
@@ -124,6 +127,7 @@ const closeModal = () => {
   width: 20%;
   margin-right: 1rem;
 }
+
 .card {
   display: flex;
   flex-direction: row;
@@ -133,10 +137,12 @@ const closeModal = () => {
   padding: -2vh;
   margin: 0.5vh 0 0 -2vh;
 }
+
 .container2 {
   padding: 2vh 0 0 2vw;
   margin: 0.5vh 0 0 -2vh;
 }
+
 /* ------------------------------------------------------------------------------------------- */
 .contentMain {
   width: 78vw;
@@ -144,7 +150,7 @@ const closeModal = () => {
   padding: 3vh;
   margin: 2vh 0 0 2vh;
   border-radius: 15px;
-  border: solid 1px #D9D9D9;
+  border: solid 1px #d9d9d9;
 }
 
 .profile-avatar {
@@ -154,7 +160,7 @@ const closeModal = () => {
   border-radius: 10%;
   background-color: #d1d1d1;
   margin: 0 0 0 1vw;
-  border: solid 1px #D9D9D9;
+  border: solid 1px #d9d9d9;
 }
 
 .content-user {
@@ -167,7 +173,6 @@ const closeModal = () => {
   margin: 0 0 0 0;
   padding: 0;
   /* border: solid 1px #D9D9D9; */
-
 }
 
 .user-edit {
@@ -180,8 +185,8 @@ const closeModal = () => {
 
 .username {
   /* background-color: #9900ff; */
-  padding: 2vh .5vh 1vh 0vh;
-  border: solid 1px #D9D9D9;
+  padding: 2vh 0.5vh 1vh 0vh;
+  border: solid 1px #d9d9d9;
 }
 
 .username span {
@@ -207,7 +212,7 @@ const closeModal = () => {
   width: calc(100px / (100vh / 100));
   height: calc(50px / (100vh / 100));
   /* background-color: #ce1791; */
-  border: solid 1px #D9D9D9;
+  border: solid 1px #d9d9d9;
   margin: 2vh 5vh 2vh 1vh;
   padding: 2vh 2vh 11vh 2vh;
   text-align: justify;
@@ -225,7 +230,7 @@ const closeModal = () => {
   padding: 1vh 0 1vh 0;
   margin: 0 0 0 0;
   border-radius: 15px;
-  border: solid 1px #D9D9D9;
+  border: solid 1px #d9d9d9;
 }
 
 .graphDisplay {
@@ -234,7 +239,7 @@ const closeModal = () => {
   height: 200px;
   border-radius: 10%;
   margin: 5vh 1vw 5vh 2vw;
-  border: solid 1px #D9D9D9;
+  border: solid 1px #d9d9d9;
 }
 
 .infoGarph {

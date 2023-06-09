@@ -1,7 +1,6 @@
 /* global $ */
 export function preload() {
-
-  console.log('Preload started');
+  console.log("Preload started");
 
   var preloadFalse = $(".preloadFalse");
   var preloadTrue = $(".preloadTrue");

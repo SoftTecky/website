@@ -1,37 +1,39 @@
 <script setup>
 import UploadWidget from "@/components/common/UploadWidget.vue";
 
-import { UPDATE_PROFILE_DESCRIPTION, UPDATE_PROFILE_AVATAR } from "@/graphql-operations";
-import {useMutation} from "@vue/apollo-composable";
-import {useAuthStore} from "@/stores/auth";
-import {ref} from "vue";
+import {
+  UPDATE_PROFILE_DESCRIPTION,
+  UPDATE_PROFILE_AVATAR,
+} from "@/graphql-operations";
+import { useMutation } from "@vue/apollo-composable";
+import { useAuthStore } from "@/stores/auth";
+import { ref } from "vue";
 
 const props = defineProps({
   show: Boolean,
-  description: String
-})
+  description: String,
+});
 
-const description = ref(props.description)
+const description = ref(props.description);
 
-const updateProfileDescription = useMutation(UPDATE_PROFILE_DESCRIPTION)
+const updateProfileDescription = useMutation(UPDATE_PROFILE_DESCRIPTION);
 updateProfileDescription.onDone((result) => {
-  console.log(result)
-})
+  console.log(result);
+});
 
-const updateProfileAvatar = useMutation(UPDATE_PROFILE_AVATAR)
-updateProfileAvatar.onDone((result) => {
-})
+const updateProfileAvatar = useMutation(UPDATE_PROFILE_AVATAR);
+updateProfileAvatar.onDone((result) => {});
 
 const onSave = () => {
   updateProfileDescription.mutate({
     user_id: useAuthStore().getId,
-    description: description.value
-  })
+    description: description.value,
+  });
   updateProfileAvatar.mutate({
     user_id: useAuthStore().getId,
-    avatar: useAuthStore().getAvatar
-  })
-}
+    avatar: useAuthStore().getAvatar,
+  });
+};
 </script>
 
 <template>
@@ -47,24 +49,28 @@ const onSave = () => {
               <upload-widget></upload-widget>
             </div>
             <div class="mb-3">
-              <label for="post-description" class="form-label">Descripcion</label>
-              <textarea class="form-control"
-                        id="post-description"
-                        rows="3"
-                        placeholder="Cuentanos sobre ti"
-                        v-model="description"
+              <label for="post-description" class="form-label"
+                >Descripcion</label
+              >
+              <textarea
+                class="form-control"
+                id="post-description"
+                rows="3"
+                placeholder="Cuentanos sobre ti"
+                v-model="description"
               >
               </textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <button type="submit" class="btn btn-primary">
+              Guardar cambios
+            </button>
           </form>
         </div>
 
         <div class="modal-footer">
-          <button
-              class="modal-default-button"
-              @click="$emit('close')"
-          >OK</button>
+          <button class="modal-default-button" @click="$emit('close')">
+            OK
+          </button>
         </div>
       </div>
     </div>

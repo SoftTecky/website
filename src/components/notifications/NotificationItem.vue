@@ -1,12 +1,13 @@
 <script setup>
-const props = defineProps(["description", "datetime", "user"])
+const props = defineProps(["connection"]);
 </script>
 
 <template>
   <div class="notification--item">
     <img
-        src="https://this-person-does-not-exist.com/img/avatar-gen29316a9cb9e0c716cbe841f496d91950.jpg"
-        alt="profile pic"/>
+      src="https://this-person-does-not-exist.com/img/avatar-gen29316a9cb9e0c716cbe841f496d91950.jpg"
+      alt="profile pic"
+    />
     <div>
       <p>
         <strong>{{ props.user }}: </strong> {{ props.description }}

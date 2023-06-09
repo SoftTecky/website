@@ -1,19 +1,19 @@
 <script setup>
-import {useAuthStore} from "@/stores/auth";
+import { useAuthStore } from "@/stores/auth";
 
 const cloudName = "dfofqtsfr";
 const uploadPreset = "softtracker";
 
 const widget = cloudinary.createUploadWidget(
-    {
-      cloudName: cloudName,
-      uploadPreset: uploadPreset,
-    },
-    (error, result) => {
-      if (!error && result && result.event === "success") {
-        useAuthStore().setAvatar(result.info.secure_url)
-      }
+  {
+    cloudName: cloudName,
+    uploadPreset: uploadPreset,
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      useAuthStore().setAvatar(result.info.secure_url);
     }
+  }
 );
 
 const onUpload = () => {
@@ -30,6 +30,4 @@ const onUpload = () => {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,29 +1,34 @@
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 
 import { useQuery } from "@vue/apollo-composable";
 import { useAuthStore } from "@/stores/auth";
 
 import { GET_NOT_CONNECTED_USERS } from "@/graphql-operations";
 
-import blankProfile from "@/assets/blank-profile.webp"
+import blankProfile from "@/assets/blank-profile.webp";
 
-const auth = useAuthStore()
-const users = ref([])
+const auth = useAuthStore();
+const users = ref([]);
 
 const notConnectedUsersQuery = useQuery(GET_NOT_CONNECTED_USERS, {
   user_id: auth.getId,
-})
+});
 notConnectedUsersQuery.onResult((result) => {
-  users.value = result.data?.users
-})
-
+  users.value = result.data?.users;
+});
 </script>
 
 <template>
   <div id="carrusel">
-    <router-link v-for="user in users" :key="user.user_id" class="foto" :data-nombre="`${user.name}`" :to="`/profile/${user.user_id}`">
-      <img :src="user.avatar ? user.avatar : blankProfile" :alt="user.name">
+    <router-link
+      v-for="user in users"
+      :key="user.user_id"
+      class="foto"
+      :data-nombre="`${user.name}`"
+      :to="`/profile/${user.user_id}`"
+    >
+      <img :src="user.avatar ? user.avatar : blankProfile" :alt="user.name" />
     </router-link>
   </div>
 </template>

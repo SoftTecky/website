@@ -1,6 +1,6 @@
 <script setup>
 import NotificationItem from "@/components/notifications/NotificationItem.vue";
-import {ref} from "vue";
+import { ref } from "vue";
 
 const notifications = ref([
   {
@@ -27,8 +27,13 @@ const notifications = ref([
 <template>
   <div class="container">
     <div class="notification--container">
-      <NotificationItem v-for="n in notifications" :key="n.id"
-                        :description="n.text" :user="n.user" :datetime="n.datetime" />
+      <NotificationItem
+        v-for="n in notifications"
+        :key="n.id"
+        :description="n.text"
+        :user="n.user"
+        :datetime="n.datetime"
+      />
     </div>
   </div>
 </template>
@@ -43,7 +48,7 @@ const notifications = ref([
 }
 
 .notification--container {
-  background-color: #A8D6EC;
+  background-color: #a8d6ec;
   padding: 1rem;
   border-radius: 0.5rem;
   width: 60%;
