@@ -2,23 +2,52 @@
 import { onUpdated, ref } from "vue";
 import Modal from "@/components/common/Modal.vue";
 import blankProfile from "@/assets/blank-profile.webp";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Radar } from "vue-chartjs";
+
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 import {
   GET_USER_BY_ID,
   INSERT_ONE_CONNECTION_REQUEST,
+  GET_USER_SOFTSKILLS,
 } from "@/graphql-operations";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 import { useRoute } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
+import { userChartStore } from "@/stores/chart";
 
 const user = ref({});
 const route = useRoute();
 const auth = useAuthStore();
+const chart = userChartStore();
 
+// USER QUERY
 const userQuery = useQuery(GET_USER_BY_ID, {
   user_id: route.params.id,
 });
+userQuery.onResult((result) => {
+  if (result.data?.users.length > 0) {
+    user.value = result.data?.users[0];
+  }
+});
 
+// CONNECTION REQUESTS
 const sendConnectionRequestMutation = useMutation(
   INSERT_ONE_CONNECTION_REQUEST
 );
@@ -29,20 +58,25 @@ sendConnectionRequestMutation.onError((error) => {
   alert("No puedes conectar con este usuario");
 });
 
-userQuery.onResult((result) => {
-  if (result.data?.users.length > 0) {
-    user.value = result.data?.users[0];
+// SOFTSKILLS
+const softSkills = ref([]);
+const softSkillsQuery = useQuery(GET_USER_SOFTSKILLS, {
+  user_id: route.params.id,
+});
+softSkillsQuery.onResult((result) => {
+  if (result.data?.softskills.length > 0) {
+    softSkills.value = result.data?.softskills;
+
+    chart.updateChart(
+      softSkills.value.map(
+        (softskill) => softskill.evaluations_aggregate.aggregate.avg.result
+      )
+    );
   }
 });
 
-onUpdated(() => {
-  userQuery.refetch({
-    user_id: route.params.id,
-  });
-});
-
+// MODAL
 const showModal = ref(false);
-
 const closeModal = () => {
   showModal.value = false;
   userQuery.refetch({
@@ -50,12 +84,20 @@ const closeModal = () => {
   });
 };
 
+// HANDLERS
 const onConnect = () => {
   sendConnectionRequestMutation.mutate({
     user_id: auth.getId,
     friend_id: route.params.id,
   });
 };
+
+// HOOKS
+onUpdated(() => {
+  userQuery.refetch({
+    user_id: route.params.id,
+  });
+});
 </script>
 
 <template>
@@ -108,42 +150,28 @@ const onConnect = () => {
     </div>
   </div>
   <!--  -->
-  <div class="container2">
+  <div v-if="softSkills && softSkills.length > 0" class="container2">
     <!--  -->
     <div class="contentGraph flex-column bg-white rounded">
       <!--  -->
       <div class="row">
         <div class="graphDisplay">
           <div class="rounded">
-            <!-- aqui se muestra una vista previa del grafico [es solo un ejemplo visual] -->
-            GRAFICO DE TELARANIA
+            <Radar
+              v-if="!softSkillsQuery.loading.value"
+              :data="chart.chart_data"
+              :options="chart.chart_options"
+            ></Radar>
           </div>
         </div>
         <div class="infoGarph">
-          <!-- aqui va unformacion del grafico, el porcentage y el nombre de la habilidad blanda evaluada -->
-          <!-- 1 -->
-          <div class="descGarph rounded">
-            <span>Comunicacion efectiva</span>
-          </div>
-          <!-- 2 -->
-          <div class="descGarph rounded">
-            <span>Trabajo en equipo</span>
-          </div>
-          <!-- 3 -->
-          <div class="descGarph rounded">
-            <span>Pensamiento critico</span>
-          </div>
-          <!-- 4 -->
-          <div class="descGarph rounded">
-            <span>Adaptabilidad</span>
-          </div>
-          <!-- 5 -->
-          <div class="descGarph rounded">
-            <span>Resolucion de problemas</span>
-          </div>
-          <!-- 6 -->
-          <div class="descGarph rounded">
-            <span>Orientacion al detalle</span>
+          <div
+            v-for="softskill in softSkills"
+            :key="softskill.softskill_id"
+            class="descGarph rounded"
+          >
+            <span>{{ softskill.name }}: </span>
+            {{ softskill.evaluations_aggregate.aggregate.avg.result }}
           </div>
         </div>
       </div>
@@ -151,11 +179,7 @@ const onConnect = () => {
     </div>
   </div>
 
-  <modal :show="showModal" @close="closeModal">
-    <template #header>
-      <h3>custom header</h3>
-    </template>
-  </modal>
+  <modal :show="showModal" @close="closeModal"> </modal>
 </template>
 
 <style scoped>
@@ -191,10 +215,8 @@ const onConnect = () => {
 
 .profile-avatar {
   flex: 0 0 200px;
-  /* Establece una anchura fija de 100px */
   height: 200px;
   border-radius: 10%;
-  background-color: #d1d1d1;
   margin: 0 0 0 1vw;
   border: solid 1px #d9d9d9;
 }
@@ -256,10 +278,6 @@ const onConnect = () => {
 
 /* ------------------------------------------------------------------------------------------- */
 
-/* * {
-    border: solid 1px red;
-} */
-
 .contentGraph {
   width: 78vw;
   height: 50vh;
@@ -271,11 +289,10 @@ const onConnect = () => {
 
 .graphDisplay {
   /* Establece una anchura fija de 100px */
-  flex: 0 0 200px;
-  height: 200px;
+  flex: 0 0 40%;
+  height: 40%;
   border-radius: 10%;
   margin: 5vh 1vw 5vh 2vw;
-  border: solid 1px #d9d9d9;
 }
 
 .infoGarph {
@@ -289,9 +306,6 @@ const onConnect = () => {
 }
 
 .descGarph {
-  width: 59vw;
-  height: 7vh;
-  background-color: hsl(0, 0%, 85%);
   margin: 2vh 0 2vh 0;
 }
 </style>

@@ -17,12 +17,10 @@ const props = defineProps({
 const description = ref(props.description);
 
 const updateProfileDescription = useMutation(UPDATE_PROFILE_DESCRIPTION);
-updateProfileDescription.onDone((result) => {
-  console.log(result);
-});
+updateProfileDescription.onDone(() => {});
 
 const updateProfileAvatar = useMutation(UPDATE_PROFILE_AVATAR);
-updateProfileAvatar.onDone((result) => {});
+updateProfileAvatar.onDone(() => {});
 
 const onSave = () => {
   updateProfileDescription.mutate({
@@ -61,16 +59,14 @@ const onSave = () => {
               >
               </textarea>
             </div>
-            <button type="submit" class="btn btn-primary">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              @click="$emit('close')"
+            >
               Guardar cambios
             </button>
           </form>
-        </div>
-
-        <div class="modal-footer">
-          <button class="modal-default-button" @click="$emit('close')">
-            OK
-          </button>
         </div>
       </div>
     </div>

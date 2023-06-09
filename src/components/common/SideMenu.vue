@@ -126,7 +126,7 @@ const auth = useAuthStore();
 #menu li a {
   text-decoration: none;
   padding: 10px;
-  color: #999;
+  color: #c9eeff;
   display: block;
   transition: 0.3s background-color;
 }
@@ -138,7 +138,7 @@ const auth = useAuthStore();
 
 #menu li a i {
   margin-right: 10px;
-  fill: #999;
+  fill: #c9eeff;
 }
 
 #menu li a:hover i {
@@ -216,7 +216,7 @@ const auth = useAuthStore();
   }
 
   #sidebar .collapse .collapse a {
-    color: #999;
+    color: #c9eeff;
   }
 
   #sidebar .collapse .collapse a:hover {

@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { useAuthStore } from "@/stores/auth";
+</script>
 
 <template>
   <!-- simple sticky navigation bar with the logo on the left and a search bar on the right -->
@@ -9,12 +11,9 @@
       </div>
       <div class="toolbar">
         <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
+          <Button class="btn btn-primary" @click="useAuthStore().logout()">
+            Salir
+          </Button>
         </form>
       </div>
     </div>

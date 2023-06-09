@@ -243,3 +243,19 @@ export const UPDATE_CONNECTION_REQUEST_STATUS = gql`
     }
   }
 `;
+
+export const GET_USER_SOFTSKILLS = gql`
+  query GetAllEvaluations($user_id: Int = 7) {
+    softskills {
+      softskill_id
+      name
+      evaluations_aggregate(where: { evaluated_user_id: { _eq: $user_id } }) {
+        aggregate {
+          avg {
+            result
+          }
+        }
+      }
+    }
+  }
+`;

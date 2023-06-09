@@ -42,6 +42,15 @@ export const useAuthStore = defineStore("auth", () => {
     avatar.value = newAvatar;
   }
 
+  function logout() {
+    id.value = 0;
+    name.value = "";
+    lastname1.value = "";
+    lastname2.value = "";
+    email.value = "";
+    avatar.value = "";
+  }
+
   return {
     getId,
     setId,
