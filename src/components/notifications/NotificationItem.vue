@@ -5,7 +5,7 @@ const props = defineProps(["description", "datetime", "user"])
 <template>
   <div class="notification--item">
     <img
-        wrc="https://this-person-does-not-exist.com/img/avatar-gen29316a9cb9e0c716cbe841f496d91950.jpg"
+        src="https://this-person-does-not-exist.com/img/avatar-gen29316a9cb9e0c716cbe841f496d91950.jpg"
         alt="profile pic"/>
     <div>
       <p>

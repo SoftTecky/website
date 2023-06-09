@@ -4,8 +4,11 @@ import { RouterLink, RouterView } from 'vue-router'
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
-import NavBar from "@/components/NavBar.vue";
-import SideMenu from "@/components/SideMenu.vue";
+import NavBar from "@/components/common/NavBar.vue";
+import SideMenu from "@/components/common/SideMenu.vue";
+import {useAuthStore} from "@/stores/auth";
+
+const auth = useAuthStore();
 </script>
 
 <template>
