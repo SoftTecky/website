@@ -138,39 +138,28 @@ export const INSERT_ONE_POST = gql`
 `;
 
 export const INSERT_ONE_CONNECTION = gql`
-  mutation InsertOneConnection(
-    $friend_id: Int = 10
-    $date: timestamp = "2023-06-08 18:36:59"
-    $user_id: Int = 1
-  ) {
-    insert_connections_one(
-      object: { friend_id: $friend_id, user_id: $user_id, date: $date }
+  mutation InsertOneConnection($friend_id: Int = 10, $user_id: Int = 11) {
+    insert_connections(
+      objects: [
+        { friend_id: $friend_id, user_id: $user_id }
+        { friend_id: $user_id, user_id: $friend_id }
+      ]
     ) {
-      friend_id
-      user_id
-      connection_id
+      returning {
+        connection_id
+        friend_id
+        user_id
+      }
     }
   }
 `;
 
 export const INSERT_ONE_CONNECTION_REQUEST = gql`
-  mutation InsertOneConnectionRequest(
-    $date: timestamp = "2023-06-08 18:36:59"
-    $friend_id: Int = 7
-    $user_id: Int = 2
-  ) {
+  mutation SendConnectionRequest($friend_id: Int = 10, $user_id: Int = 10) {
     insert_connection_requests_one(
-      object: {
-        date: $date
-        friend_id: $friend_id
-        user_id: $user_id
-        accepted: false
-      }
+      object: { accepted: false, user_id: $user_id, friend_id: $friend_id }
     ) {
-      friend_id
-      user_id
       connectionRequest_id
-      accepted
     }
   }
 `;
@@ -221,6 +210,36 @@ export const UPDATE_PROFILE_AVATAR = gql`
       _set: { avatar: $avatar }
     ) {
       avatar
+    }
+  }
+`;
+
+export const GET_USER_CONNECTION_REQUESTS = gql`
+  query GetConnectionRequests($user_id: Int = 11) {
+    connection_requests(where: { friend_id: { _eq: $user_id } }) {
+      connectionRequest_id
+      accepted
+      userByUserId {
+        user_id
+        name
+        lastname1
+        lastname2
+        avatar
+      }
+    }
+  }
+`;
+
+export const UPDATE_CONNECTION_REQUEST_STATUS = gql`
+  mutation AcceptConnectionRequest($connectionRequest_id: Int = 10) {
+    update_connection_requests_by_pk(
+      pk_columns: { connectionRequest_id: $connectionRequest_id }
+      _set: { accepted: true }
+    ) {
+      connectionRequest_id
+      accepted
+      friend_id
+      user_id
     }
   }
 `;

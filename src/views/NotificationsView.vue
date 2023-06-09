@@ -1,38 +1,43 @@
 <script setup>
 import NotificationItem from "@/components/notifications/NotificationItem.vue";
-import { ref } from "vue";
 
-const notifications = ref([
-  {
-    id: 1,
-    text: "Notification text",
-    datetime: "2021-01-01 00:00:00",
-    user: "User name",
-  },
-  {
-    id: 2,
-    text: "Notification text",
-    datetime: "2021-01-01 00:00:00",
-    user: "User name",
-  },
-  {
-    id: 3,
-    text: "Notification text",
-    datetime: "2021-01-01 00:00:00",
-    user: "User name",
-  },
-]);
+import { onUpdated, ref } from "vue";
+
+import { useQuery, useMutation } from "@vue/apollo-composable";
+import { useAuthStore } from "@/stores/auth";
+
+import { GET_USER_CONNECTION_REQUESTS } from "@/graphql-operations";
+
+const auth = useAuthStore();
+
+const notifications = ref([]);
+
+const notificationsQuery = useQuery(GET_USER_CONNECTION_REQUESTS, {
+  user_id: auth.getId,
+});
+notificationsQuery.onResult((result) => {
+  if (result.data?.connection_requests.length > 0) {
+    notifications.value = result.data?.connection_requests;
+  }
+});
+
+const onConnect = () => {
+  notificationsQuery.refetch();
+};
+
+onUpdated(() => {
+  notificationsQuery.refetch();
+});
 </script>
 
 <template>
   <div class="container">
     <div class="notification--container">
       <NotificationItem
-        v-for="n in notifications"
-        :key="n.id"
-        :description="n.text"
-        :user="n.user"
-        :datetime="n.datetime"
+        v-for="n in notifications.filter((n) => n.accepted === false)"
+        :key="n.connectionRequest_id"
+        :connection="n"
+        :on-connect="onConnect"
       />
     </div>
   </div>

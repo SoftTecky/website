@@ -3,8 +3,11 @@ import { onUpdated, ref } from "vue";
 import Modal from "@/components/common/Modal.vue";
 import blankProfile from "@/assets/blank-profile.webp";
 
-import { GET_USER_BY_ID } from "@/graphql-operations";
-import { useQuery } from "@vue/apollo-composable";
+import {
+  GET_USER_BY_ID,
+  INSERT_ONE_CONNECTION_REQUEST,
+} from "@/graphql-operations";
+import { useMutation, useQuery } from "@vue/apollo-composable";
 import { useRoute } from "vue-router";
 import { useAuthStore } from "@/stores/auth";
 
@@ -14,6 +17,16 @@ const auth = useAuthStore();
 
 const userQuery = useQuery(GET_USER_BY_ID, {
   user_id: route.params.id,
+});
+
+const sendConnectionRequestMutation = useMutation(
+  INSERT_ONE_CONNECTION_REQUEST
+);
+sendConnectionRequestMutation.onDone((result) => {
+  alert("Solicitud de conexion exitosa");
+});
+sendConnectionRequestMutation.onError((error) => {
+  alert("No puedes conectar con este usuario");
 });
 
 userQuery.onResult((result) => {
@@ -34,6 +47,13 @@ const closeModal = () => {
   showModal.value = false;
   userQuery.refetch({
     user_id: route.params.id,
+  });
+};
+
+const onConnect = () => {
+  sendConnectionRequestMutation.mutate({
+    user_id: auth.getId,
+    friend_id: route.params.id,
   });
 };
 </script>
@@ -67,7 +87,9 @@ const closeModal = () => {
               >
                 Editar perfil
               </button>
-              <button v-else class="btn btn-primary">Conectar</button>
+              <button v-else @click="onConnect" class="btn btn-primary">
+                Conectar
+              </button>
             </div>
           </div>
           <!-- p-3 -->
@@ -100,15 +122,29 @@ const closeModal = () => {
         <div class="infoGarph">
           <!-- aqui va unformacion del grafico, el porcentage y el nombre de la habilidad blanda evaluada -->
           <!-- 1 -->
-          <div class="descGarph rounded"></div>
+          <div class="descGarph rounded">
+            <span>Comunicacion efectiva</span>
+          </div>
           <!-- 2 -->
-          <div class="descGarph rounded"></div>
+          <div class="descGarph rounded">
+            <span>Trabajo en equipo</span>
+          </div>
           <!-- 3 -->
-          <div class="descGarph rounded"></div>
+          <div class="descGarph rounded">
+            <span>Pensamiento critico</span>
+          </div>
           <!-- 4 -->
-          <div class="descGarph rounded"></div>
+          <div class="descGarph rounded">
+            <span>Adaptabilidad</span>
+          </div>
           <!-- 5 -->
-          <div class="descGarph rounded"></div>
+          <div class="descGarph rounded">
+            <span>Resolucion de problemas</span>
+          </div>
+          <!-- 6 -->
+          <div class="descGarph rounded">
+            <span>Orientacion al detalle</span>
+          </div>
         </div>
       </div>
       <!--  -->
