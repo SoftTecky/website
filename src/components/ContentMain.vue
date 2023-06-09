@@ -1,29 +1,26 @@
 <template>
-<div class="rounded">
-    <div class="profile-coment bg-white h-50">
-    <!--  -->
-    <div class="profile-header">
-        <div class="d-flex align-items-center">
-        <div class="profile-avatar"></div>
-        <div class="flex-column">
-            <div class="col">
-                <div class="item-name rounded">
-                <span>Usuario 1</span>
+    <div class="rounded">
+        <div class="profile-coment bg-white h-50">
+            <!--  -->
+            <div class="profile-header">
+                <div class="d-flex align-items-center">
+                    <div class="profile-avatar"></div>
+                    <div class="flex-column">
+                        <div class="col">
+                            <div class="item-name rounded">
+                                <span>Usuario 1</span>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="item-coment rounded h-50 w-100"
+                                placeholder="¿En que estas pensando?" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-            <div class="col">
-                <input
-                type="text"
-                class="item-coment rounded h-50 w-100"
-                placeholder="¿En que estas pensando?"
-                />
-            </div>
-        </div>
+            <!--  -->
         </div>
     </div>
-    <!--  -->
-    </div>
-</div>
 </template>
 
 <script>

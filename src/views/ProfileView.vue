@@ -1,22 +1,78 @@
 <template>
     <div class="container">
-        <div class="contentProfil">
-            <div class="Cuadrado-Principal">
-                <button class="Editar"> Editar </button>
-                <div class="Cuadro-foto"> IMAGEN USUARIO</div>
-                <div class="Cuadro-nombre">@usuario</div>
-                <div class="Cuadro-info"> informacion de un usuario generico</div>
+
+        <div class="contentMain flex-column bg-white rounded">
+            <!--  -->
+            <div class="row col">
+                <div class="profile-avatar col order-1">
+                    <img src=" " alt="imagen de usuario" style="width: 100%; height: 100%;">
+                </div>
+                <div class="content-user col order-2">
+                    <!-- p-3 -->
+                    <div class="user-edit row ">
+                        <div class="username col order-1 rounded">
+                            <span>
+                                @user
+                            </span>
+                        </div>
+                        <!--  -->
+                        <div class="btnEdit col order-2 rounded">
+                            <button class="btn">
+                                <span>
+                                    Editar
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- p-3 -->
+                    <div class="userdesc col order-3 rounded">
+                        <span>
+                            ¡Hola soy {@user}! Mis amigos me dicen ' ',
+                            mis padres accidente y cuando estornudo todos
+                            me dicen salud
+                        </span>
+                    </div>
+                </div>
             </div>
+            <!--  -->
         </div>
-        <div class="conetntGraph">
-            <div class="Cuadro-inferior">
-                <div class="Cuadro-Grafico"> GRAFICO DE TELARANIA </div>
-                <div class="Primer-Cuadro"></div>
-                <div class="Segundo-Cuadro"></div>
-                <div class="Tercer-Cuadro"></div>
-                <div class="Cuarto-Cuadro"></div>
-                <div class="Quinto-Cuadro"></div>
+    </div>
+    <!--  -->
+    <div class="container2">
+        <!--  -->
+        <div class="contentGraph flex-column bg-white rounded">
+            <!--  -->
+            <div class="row">
+                <div class="graphDisplay">
+                    <div class="rounded">
+                        <!-- aqui se muestra una vista previa del grafico [es solo un ejemplo visual] -->
+                        GRAFICO DE TELARANIA
+                    </div>
+                </div>
+                <div class="infoGarph">
+                    <!-- 1 -->
+                    <div class="descGarph rounded">
+
+                    </div>
+                    <!-- 2 -->
+                    <div class="descGarph rounded">
+
+                    </div>
+                    <!-- 3 -->
+                    <div class="descGarph rounded">
+
+                    </div>
+                    <!-- 4 -->
+                    <div class="descGarph rounded">
+
+                    </div>
+                    <!-- 5 -->
+                    <div class="descGarph rounded">
+
+                    </div>
+                </div>
             </div>
+            <!--  -->
         </div>
     </div>
 </template>
@@ -33,207 +89,124 @@ export default {
     padding: -2vh;
     margin: 0.5vh 0 0 -2vh;
 }
-
-.Cuadrado-Principal {
+.container2 {
+    padding: 2vh 0 0 2vw;
+    margin: 0.5vh 0 0 -2vh;
+}
+/* ------------------------------------------------------------------------------------------- */
+.contentMain {
     width: 78vw;
-    height: 300px;
-    background-color: hsl(180, 38%, 41%);
-
+    height: 43vh;
     padding: 3vh;
     margin: 2vh 0 0 2vh;
+    border-radius: 15px;
+    border: solid 1px #D9D9D9;
 }
 
-/* * { border: 1px solid red; } */
+.profile-avatar {
+    flex: 0 0 200px;
+    /* Establece una anchura fija de 100px */
+    height: 200px;
+    border-radius: 10%;
+    background-color: #d1d1d1;
+    margin: 0 0 0 1vw;
+    border: solid 1px #D9D9D9;
+}
 
-.Editar {
-    width: 230px;
-    height: 70px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
+.content-user {
+    width: 150vw;
+    height: auto;
+    /* background-color: #00ffc8; */
+    flex: 1;
+    /* Utiliza el espacio restante */
     /* top vh, right vw, bottom vh, left vw */
-    margin: 0 0 0 124vh;
+    margin: 0 0 0 0;
+    padding: 0;
+    /* border: solid 1px #D9D9D9; */
+
+}
+
+.user-edit {
+    width: auto;
+    height: auto;
+    /* background-color: #0ee00e; */
+    margin: 2vh 5vh 2vh 1vh;
+    padding: 0;
+}
+
+.username {
+    /* background-color: #9900ff; */
+    padding: 2vh .5vh 1vh 0vh;
+    border: solid 1px #D9D9D9;
+}
+
+.username span {
+    text-align: justify;
+    margin: 0 85vh 0 2vh;
+    /* border: solid 1px red; */
+}
+
+.btnEdit {
+    font-size: 12px;
+    width: calc(30px / (100vh / 100));
+    /* background-color: #e9586b; */
+}
+
+.btn {
+    background-color: hsl(180, 3%, 57%);
+    /* top vh, right vw, bottom vh, left vw */
+    padding: 2vh 5vw 2vh 5vw;
     border-radius: 10px;
 }
 
-.Cuadro-foto {
-    width: 300px;
-    height: 250px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: -11vh 0 0 1vh;
-    border-radius: 15px;
+.userdesc {
+    width: calc(100px / (100vh / 100));
+    height: calc(50px / (100vh / 100));
+    /* background-color: #ce1791; */
+    border: solid 1px #D9D9D9;
+    margin: 2vh 5vh 2vh 1vh;
+    padding: 2vh 2vh 11vh 2vh;
+    text-align: justify;
 }
 
-.Cuadro-nombre {
-    width: 455px;
-    height: 70px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: -40vh 0 0 51vh;
-    border-radius: 8px;
-}
+/* ------------------------------------------------------------------------------------------- */
 
-.Cuadro-info {
-    width: 700px;
-    height: 165px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: 2vh 0 0 51vh;
-    border-radius: 5px;
-}
+/* * {
+    border: solid 1px red;
+} */
 
-/* ------------------------------------------------------------------ */
-.Cuadro-inferior {
+.contentGraph {
     width: 78vw;
-    height: 274px;
-    background-color: hsl(180, 38%, 41%);
-
-    padding: 3vh;
-    margin: 2vh 0 0 2vh;
-}
-
-.Cuadro-Grafico {
-    width: 300px;
-    height: 238px;
-    background-color: hsl(180, 3%, 57%);
-
-    padding: 3vh;
-    margin: -0.5vh 0 0 1vh;
+    height: 50vh;
+    padding: 1vh 0 1vh 0;
+    margin: 0 0 0 0;
     border-radius: 15px;
+    border: solid 1px #D9D9D9;
 }
 
-.Primer-Cuadro,
-.Segundo-Cuadro,
-.Tercer-Cuadro,
-.Cuarto-Cuadro,
-.Quinto-Cuadro {
-    width: 706px;
-    height: 37px;
-    background-color: hsl(180, 3%, 57%);
-
-    margin-left: 51vh;
+.graphDisplay {
+    /* Establece una anchura fija de 100px */
+    flex: 0 0 200px;
+    height: 200px;
+    border-radius: 10%;
+    margin: 5vh 1vw 5vh 2vw;
+    border: solid 1px #D9D9D9;
 }
 
-.Primer-Cuadro {
-    padding: 3vh;
-    margin-top: -37vh;
+.infoGarph {
+    width: 100vw;
+    height: auto;
+    /* Utiliza el espacio restante */
+    flex: 1;
+    /* top vh, right vw, bottom vh, left vw */
+    margin: 0 0 0 0;
+    padding: 0;
 }
 
-.Segundo-Cuadro {
-    padding: 3vh;
-    margin-top: 1vh;
+.descGarph {
+    width: 59vw;
+    height: 7vh;
+    background-color: hsl(0, 0%, 85%);
+    margin: 2vh 0 2vh 0;
 }
-
-.Tercer-Cuadro {
-    padding: 3vh;
-    margin-top: 1vh;
-}
-
-.Cuarto-Cuadro {
-    padding: 3vh;
-    margin-top: 1vh;
-}
-
-.Quinto-Cuadro {
-    padding: 3vh;
-    margin-top: 1vh;
-}
-
-/* ------------------------------------------------------------------ */
-/* LE FALTA CORRECCION */
-@media screen and (min-width: 1920px) {
-    .container {
-    padding: 2vh;
-    margin: 0;
-}
-
-.Cuadrado-Principal {
-    width: 90vw;
-    max-width: 900px;
-    height: 300px;
-    background-color: hsl(180, 38%, 41%);
-    margin: 0 auto;
-    padding: 3vh;
-    box-sizing: border-box;
-}
-
-.Editar {
-    width: 230px;
-    height: 70px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: 0 auto;
-    margin-top: 2vh;
-    border-radius: 10px;
-}
-
-.Cuadro-foto {
-    width: 300px;
-    height: 250px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: 2vh auto;
-    border-radius: 15px;
-}
-
-.Cuadro-nombre {
-    width: 455px;
-    height: 70px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: 2vh auto;
-    border-radius: 8px;
-}
-
-.Cuadro-info {
-    width: 90vw;
-    max-width: 700px;
-    height: 165px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: 2vh auto;
-    border-radius: 5px;
-}
-
-.Cuadro-inferior {
-    width: 90vw;
-    max-width: 900px;
-    height: 274px;
-    background-color: hsl(180, 38%, 41%);
-    margin: 2vh auto;
-    padding: 3vh;
-    box-sizing: border-box;
-}
-
-.Cuadro-Grafico {
-    width: 300px;
-    height: 238px;
-    background-color: hsl(180, 3%, 57%);
-    padding: 3vh;
-    margin: -0.5vh auto;
-    border-radius: 15px;
-}
-
-.Primer-Cuadro,
-.Segundo-Cuadro,
-.Tercer-Cuadro,
-.Cuarto-Cuadro,
-.Quinto-Cuadro {
-    width: 90vw;
-    max-width: 706px;
-    height: 37px;
-    background-color: hsl(180, 3%, 57%);
-    margin: 1vh auto;
-}
-
-.Primer-Cuadro,
-.Segundo-Cuadro,
-.Tercer-Cuadro,
-.Cuarto-Cuadro,
-.Quinto-Cuadro {
-    padding: 3vh;
-}
-
-}
-
 </style>
